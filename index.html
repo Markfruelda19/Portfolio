@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | Mark Fruelda</title>
+  <link rel="icon" type="image/png" href="photos/favicon.png">
+  <meta name="description" content="Portfolio of Mark Fruelda — Web Developer skilled in PHP, JavaScript, and MySQL. View projects and contact me for collaboration.">
+  <meta name="author" content="Mark Fruelda">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    #imageModal::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9));
+      z-index: -1;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+  <!-- Header -->
+  <header class="bg-gray-900/80 backdrop-blur-md text-white fixed top-0 left-0 w-full shadow z-50 transition">
+    <nav class="max-w-6xl mx-auto flex justify-between items-center p-5">
+      <h1 class="text-xl font-bold">Mark Fruelda | Web Developer</h1>
+      <ul class="flex space-x-6">
+        <li><a href="#about" class="hover:text-indigo-400 transition">About</a></li>
+        <li><a href="#projects" class="hover:text-indigo-400 transition">Projects</a></li>
+        <li><a href="#contact" class="hover:text-indigo-400 transition">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="min-h-screen flex flex-col justify-center items-center text-center bg-gradient-to-br from-indigo-900 via-purple-800 to-indigo-700 text-white px-6">
+    <h1 class="text-5xl md:text-6xl font-extrabold mb-4">Hi, I'm <span class="text-indigo-300">Mark Fruelda</span></h1>
+    <p class="text-lg md:text-xl mb-8 max-w-2xl">
+      Passionate Web Developer crafting elegant and efficient digital experiences.
+    </p>
+    <a href="#projects" 
+       class="px-8 py-3 text-lg font-semibold bg-white text-indigo-800 rounded-full shadow-lg hover:scale-110 hover:shadow-indigo-400 transition duration-300">
+       View My Projects 🚀
+    </a>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="min-h-screen flex items-center justify-center bg-white shadow-md rounded-lg px-12 max-w-6xl mx-auto" data-aos="fade-up">
+    <div class="flex flex-col md:flex-row items-center md:items-start gap-10">
+      
+      <!-- Profile Picture -->
+      <div class="flex-shrink-0">
+        <img src="photos/myPhoto.jpg" alt="My Photo" 
+             class="w-64 h-[420px] md:w-80 md:h-[500px] object-cover rounded-xl border-4 border-gray-800 shadow-lg">
+      </div>
+
+      <!-- About Text -->
+      <div class="text-center md:text-left max-w-xl">
+        <h2 class="text-4xl font-bold mb-4">Mark Fruelda</h2>
+        <h3 class="text-xl font-semibold text-gray-700 mb-4">A Bit About Me</h3>
+        <p class="text-lg leading-relaxed text-gray-700 mb-6">
+          I am passionate about building clean and efficient web applications. 
+          With experience in PHP, JavaScript, and MySQL, I enjoy creating solutions 
+          that improve user experience and solve real-world problems. 
+          I thrive in collaborative environments and am always eager to learn and adapt.
+        </p>
+
+        <!-- Resume Button -->
+        <a href="resume.pdf" download
+           class="inline-block mt-4 px-6 py-2 border border-indigo-600 text-indigo-600 rounded-full hover:bg-indigo-600 hover:text-white transition">
+           📄 Download Resume
+        </a>
+
+        
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="max-w-6xl mx-auto bg-white shadow-md rounded-lg p-8 mt-10" data-aos="fade-up">
+    <h2 class="text-2xl font-bold mb-6">Projects</h2>
+
+    <!-- Dental Clinic -->
+    <div class="mb-10 hover:shadow-[0_0_25px_rgba(99,102,241,0.3)] transition duration-300 rounded-xl p-4">
+      <h3 class="text-xl font-bold">DENTAL CLINIC INFORMATION MANAGEMENT SYSTEM</h3>
+      <p class="text-gray-600 text-sm mb-1">Nov 2024 - Dec 2024</p>
+      <p class="text-gray-700 text-sm mb-3">Associated with <span class="font-semibold">Batangas State University</span></p>
+
+      <ul class="list-disc list-inside text-gray-700 mb-3">
+        <li>Stores and manages patient records, services, and appointments in one system.</li>
+        <li>Tracks clinic operations such as scheduling, billing, and service utilization.</li>
+        <li>Shows patient demographics for better insights into age, gender, and other profiles.</li>
+      </ul>
+
+      <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">PHP</span>
+        <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">JavaScript</span>
+        <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">MySQL</span>
+      </div>
+
+      <!-- Screenshots -->
+      <div class="flex flex-wrap gap-4 mb-4">
+        <img src="photos/landing.png" alt="Screenshot 1" class="w-60 h-40 object-cover rounded-md shadow cursor-pointer hover:opacity-80" onclick="openModal(this)">
+        <img src="photos/calendar.png" alt="Screenshot 2" class="w-60 h-40 object-cover rounded-md shadow cursor-pointer hover:opacity-80" onclick="openModal(this)">
+        <img src="photos/DEMOGRAPHICS.png" alt="Screenshot 3" class="w-60 h-40 object-cover rounded-md shadow cursor-pointer hover:opacity-80" onclick="openModal(this)">
+        <img src="photos/appointment.png" alt="Screenshot 4" class="w-60 h-40 object-cover rounded-md shadow cursor-pointer hover:opacity-80" onclick="openModal(this)">
+      </div>
+
+      <div class="flex gap-3">
+        <a href="https://github.com/Markfruelda19/Dental-Clinic-Information-Management-System" target="_blank" class="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700">View Source Code</a>
+      </div>
+    </div>
+
+    <!-- Food Ordering -->
+    <div class="mb-10 hover:shadow-[0_0_25px_rgba(99,102,241,0.3)] transition duration-300 rounded-xl p-4">
+      <h3 class="text-xl font-bold">ONLINE FOOD ORDERING SYSTEM</h3>
+      <p class="text-gray-600 text-sm mb-1">May 2023</p>
+      <p class="text-gray-700 text-sm mb-3">Associated with <span class="font-semibold">Batangas State University</span></p>
+
+      <ul class="list-disc list-inside text-gray-700 mb-3">
+        <li>Allows customers to browse menus and conveniently place food orders online.</li>
+        <li>Manages restaurant operations such as order tracking, delivery scheduling, and menu updates.</li>
+        <li>Improves customer experience with real-time order status and easy reordering options.</li>
+      </ul>
+
+      <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">PHP</span>
+        <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">MySQL</span>
+      </div>
+
+      <!-- Screenshots -->
+      <div class="flex flex-wrap gap-4 mb-4">
+        <img src="photos/Menu.jpg" alt="Screenshot 1" class="w-60 h-40 object-cover rounded-md shadow cursor-pointer hover:opacity-80" onclick="openModal(this)">
+        <img src="photos/category.jpg" alt="Screenshot 2" class="w-60 h-40 object-cover rounded-md shadow cursor-pointer hover:opacity-80" onclick="openModal(this)">
+        <img src="photos/orders.jpg" alt="Screenshot 3" class="w-60 h-40 object-cover rounded-md shadow cursor-pointer hover:opacity-80" onclick="openModal(this)">
+        <img src="photos/dashboard.jpg" alt="Screenshot 4" class="w-60 h-40 object-cover rounded-md shadow cursor-pointer hover:opacity-80" onclick="openModal(this)">
+      </div>
+
+      <div class="flex gap-3">
+        <a href="https://github.com/Markfruelda19/Food-Ordering-System" target="_blank" class="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700">View Source Code</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50">
+    <span class="absolute top-5 right-8 text-white text-3xl cursor-pointer" onclick="closeModal()">&times;</span>
+    <img id="modalImage" class="max-w-4xl max-h-[80vh] rounded-lg shadow-lg">
+  </div>
+
+  <!-- Contact -->
+  <section id="contact" class="max-w-6xl mx-auto bg-white shadow-md rounded-lg p-8 mt-10" data-aos="fade-up">
+    <h2 class="text-2xl font-bold mb-6">Contact</h2>
+    <p>Email: <a href="mailto:markfruelda19@gmail.com" class="text-blue-600 hover:underline">markfruelda19@gmail.com</a></p>
+    <p>GitHub: <a href="https://github.com/Markfruelda19" target="_blank" class="text-blue-600 hover:underline">Markfruelda19</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/mark-fruelda" target="_blank" class="text-blue-600 hover:underline">linkedin.com/in/mark-fruelda</a></p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white text-center py-5 mt-10">
+    <p>© 2025 Mark Fruelda | All Rights Reserved</p>
+  </footer>
+
+  <!-- Back to Top -->
+  <button id="backToTop" class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hidden hover:bg-indigo-700 transition">
+    ↑
+  </button>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+
+    function openModal(img) {
+      document.getElementById("modalImage").src = img.src;
+      document.getElementById("imageModal").classList.remove("hidden");
+      document.getElementById("imageModal").classList.add("flex");
+    }
+
+    function closeModal() {
+      document.getElementById("imageModal").classList.add("hidden");
+      document.getElementById("imageModal").classList.remove("flex");
+    }
+
+    // Highlight Active Section in Navbar
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("nav ul li a");
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        if (pageYOffset >= sectionTop) current = section.getAttribute("id");
+      });
+      navLinks.forEach(link => {
+        link.classList.remove("text-indigo-400");
+        if (link.getAttribute("href").includes(current)) {
+          link.classList.add("text-indigo-400");
+        }
+      });
+    });
+
+    // Back to Top Button
+    const backToTop = document.getElementById("backToTop");
+    window.addEventListener("scroll", () => {
+      backToTop.classList.toggle("hidden", window.scrollY < 300);
+    });
+    backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+</body>
+</html>

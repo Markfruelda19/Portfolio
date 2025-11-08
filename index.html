@@ -11,15 +11,24 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
+
+    /* Modal background */
     #imageModal::before {
       content: "";
       position: absolute;
       inset: 0;
       background: radial-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9));
       z-index: -1;
+    }
+
+    /* Typing cursor blink */
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
+    }
+    .animate-blink {
+      animation: blink 0.9s infinite;
     }
   </style>
 </head>
@@ -32,15 +41,19 @@
       <h1 class="text-xl font-bold">Mark Fruelda | Web Developer</h1>
       <ul class="flex space-x-6">
         <li><a href="#about" class="hover:text-indigo-400 transition">About</a></li>
+        <li><a href="#experience" class="hover:text-indigo-400 transition">Experience</a></li>
         <li><a href="#projects" class="hover:text-indigo-400 transition">Projects</a></li>
         <li><a href="#contact" class="hover:text-indigo-400 transition">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Hero Section -->
-  <section class="min-h-screen flex flex-col justify-center items-center text-center bg-gradient-to-br from-indigo-900 via-purple-800 to-indigo-700 text-white px-6">
-    <h1 class="text-5xl md:text-6xl font-extrabold mb-4">Hi, I'm <span class="text-indigo-300">Mark Fruelda</span></h1>
+  <!-- Hero Section with Typing Animation -->
+  <section class="min-h-screen flex flex-col justify-center items-center text-center bg-gradient-to-br from-indigo-900 via-purple-800 to-indigo-700 text-white px-6 relative overflow-hidden">
+    <h1 class="text-5xl md:text-6xl font-extrabold mb-4">
+      Hi, I'm 
+      <span id="typingName" class="text-indigo-300 border-r-4 border-indigo-300 animate-blink"></span>
+    </h1>
     <p class="text-lg md:text-xl mb-8 max-w-2xl">
       Passionate Web Developer crafting elegant and efficient digital experiences.
     </p>
@@ -50,102 +63,186 @@
     </a>
   </section>
 
-  <!-- About -->
-  <section id="about" class="min-h-screen flex items-center justify-center bg-white shadow-md rounded-lg px-12 max-w-6xl mx-auto" data-aos="fade-up">
-    <div class="flex flex-col md:flex-row items-center md:items-start gap-10">
-      
-      <!-- Profile Picture -->
-      <div class="flex-shrink-0">
-        <img src="photos/myPhoto.jpg" alt="My Photo" 
-             class="w-64 h-[420px] md:w-80 md:h-[500px] object-cover rounded-xl border-4 border-gray-800 shadow-lg">
+  <!-- About Section -->
+<section id="about" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 px-8 md:px-16" data-aos="fade-up">
+  <div class="max-w-6xl w-full flex flex-col md:flex-row items-center md:items-start gap-16">
+
+   <div class="relative flex justify-center items-center">
+  <img src="photos/myPhoto1.png" alt="Mark Fruelda"
+       class="w-[400px] md:w-[480px] h-auto object-contain bg-transparent transition-transform duration-500 ease-out hover:scale-105">
+  
+  <!-- Soft glow behind the image -->
+  <div class="absolute w-64 h-64 bg-indigo-400 rounded-full blur-3xl opacity-30 -z-10"></div>
+</div>
+
+    <!-- About Content -->
+    <div class="flex-1 text-center md:text-left" data-aos="fade-left">
+      <h2 class="text-5xl font-extrabold text-gray-900 mb-4">Hello!</h2>
+      <h3 class="text-2xl font-semibold text-indigo-600 mb-6">I’m Mark Fruelda</h3>
+      <p class="text-lg text-gray-700 leading-relaxed mb-6">
+        A  <span class="font-medium text-indigo-700">Web Developer</span> who enjoys building clean, responsive, and user-friendly websites. 
+        I work with PHP, JavaScript, and MySQL to create systems that don’t just look good but also run smoothly behind the scenes.
+      </p>
+      <p class="text-lg text-gray-700 leading-relaxed mb-8">
+        I’m always curious about new technologies and love figuring out better ways to solve problems through code. 
+        For me, web development is about creativity, collaboration, and making every project a little better than the last.
+      </p>
+
+      <!-- Floating signature style -->
+      <div class="inline-flex items-center gap-3 mb-8">
+        <span class="text-gray-600 italic">Let’s build something great together.</span>
       </div>
 
-      <!-- About Text -->
-      <div class="text-center md:text-left max-w-xl">
-        <h2 class="text-4xl font-bold mb-4">Mark Fruelda</h2>
-        <h3 class="text-xl font-semibold text-gray-700 mb-4">A Bit About Me</h3>
-        <p class="text-lg leading-relaxed text-gray-700 mb-6">
-          I am passionate about building clean and efficient web applications. 
-          With experience in PHP, JavaScript, and MySQL, I enjoy creating solutions 
-          that improve user experience and solve real-world problems. 
-          I thrive in collaborative environments and always eager to learn and adapt.
-        </p>
-
-        <!-- Resume Button -->
+      <!-- Buttons -->
+      <div class="flex flex-wrap gap-4 justify-center md:justify-start">
         <a href="Mark-Joseph-Fruelda-Resume.pdf" download
-           class="inline-block mt-4 px-6 py-2 border border-indigo-600 text-indigo-600 rounded-full hover:bg-indigo-600 hover:text-white transition">
+           class="px-6 py-3 bg-indigo-600 text-white rounded-full font-medium shadow-md hover:bg-indigo-700 transition">
            📄 Download Resume
         </a>
+        <a href="#contact"
+           class="px-6 py-3 border-2 border-indigo-600 text-indigo-600 rounded-full font-medium hover:bg-indigo-600 hover:text-white transition">
+           💬 Contact Me
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
+  <!-- Experience Section -->
+<section id="experience" class="py-20 bg-gradient-to-b from-white to-gray-100" data-aos="fade-up">
+  <div class="max-w-6xl mx-auto px-6 md:px-12">
+    <h2 class="text-4xl font-bold text-gray-900 mb-14 text-center">Experience</h2>
+
+    <!-- Timeline Container -->
+    <div class="relative border-l-4 border-indigo-500 pl-8 space-y-12">
+
+      <!-- OJT Experience -->
+      <div class="relative group" data-aos="fade-right">
+        <div class="absolute -left-6 top-2 w-6 h-6 bg-indigo-500 rounded-full border-4 border-white group-hover:scale-125 transition-transform duration-300"></div>
         
-    </div>
-  </section>
+        <div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-[0_0_30px_rgba(99,102,241,0.2)] transition duration-300">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-3">
+            <div>
+              <h3 class="text-2xl font-semibold text-gray-900 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m2 0a2 2 0 002-2V7a2 2 0 00-2-2h-1.28a2 2 0 01-1.5-.67L12.5 3.5a2 2 0 00-1.5-.67H9a2 2 0 00-2 2v3a2 2 0 002 2h6z" />
+                </svg>
+                Software Developer Intern
+              </h3>
+              <p class="text-gray-600 text-sm">Bridge Consultancy FZE | Remote</p>
+            </div>
+            <span class="text-gray-600 text-sm mt-2 md:mt-0 italic">February – May 2025</span>
+          </div>
 
-  <!-- Projects -->
-  <section id="projects" class="max-w-6xl mx-auto bg-white shadow-md rounded-lg p-8 mt-10" data-aos="fade-up">
-    <h2 class="text-2xl font-bold mb-6">Projects</h2>
-
-    <!-- Dental Clinic -->
-    <div class="mb-10 hover:shadow-[0_0_25px_rgba(99,102,241,0.3)] transition duration-300 rounded-xl p-4">
-      <h3 class="text-xl font-bold">DENTAL CLINIC INFORMATION MANAGEMENT SYSTEM</h3>
-      <p class="text-gray-600 text-sm mb-1">Nov 2024 - Dec 2024</p>
-      <p class="text-gray-700 text-sm mb-3">Associated with <span class="font-semibold">Batangas State University</span></p>
-
-      <ul class="list-disc list-inside text-gray-700 mb-3">
-        <li>Stores and manages patient records, services, and appointments in one system.</li>
-        <li>Tracks clinic operations such as scheduling, billing, and service utilization.</li>
-        <li>Shows patient demographics for better insights into age, gender, and other profiles.</li>
-      </ul>
-
-      <div class="flex flex-wrap gap-2 mb-4">
-        <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">PHP</span>
-        <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">JavaScript</span>
-        <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">MySQL</span>
+          <ul class="list-disc list-inside text-gray-700 leading-relaxed space-y-1">
+            <li>Developed a full-stack invoicing system with seamless front-to-back integration.</li>
+            <li>Created user-friendly invoice management interfaces and RESTful backend logic.</li>
+            <li>Collaborated in a remote team using Git and modern development workflows.</li>
+          </ul>
+        </div>
       </div>
 
-      <!-- Screenshots -->
-      <div class="flex flex-wrap gap-4 mb-4">
-        <img src="photos/landing.png" alt="Screenshot 1" class="w-60 h-40 object-cover rounded-md shadow cursor-pointer hover:opacity-80" onclick="openModal(this)">
-        <img src="photos/calendar.png" alt="Screenshot 2" class="w-60 h-40 object-cover rounded-md shadow cursor-pointer hover:opacity-80" onclick="openModal(this)">
-        <img src="photos/DEMOGRAPHICS.png" alt="Screenshot 3" class="w-60 h-40 object-cover rounded-md shadow cursor-pointer hover:opacity-80" onclick="openModal(this)">
-        <img src="photos/appointment.png" alt="Screenshot 4" class="w-60 h-40 object-cover rounded-md shadow cursor-pointer hover:opacity-80" onclick="openModal(this)">
-      </div>
+      <!-- Academic Experience -->
+      <div class="relative group" data-aos="fade-left">
+        <div class="absolute -left-6 top-2 w-6 h-6 bg-indigo-500 rounded-full border-4 border-white group-hover:scale-125 transition-transform duration-300"></div>
 
-      <div class="flex gap-3">
-        <a href="https://github.com/Markfruelda19/Dental-Clinic-Information-Management-System" target="_blank" class="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700">View Source Code</a>
-      </div>
-    </div>
+        <div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-[0_0_30px_rgba(99,102,241,0.2)] transition duration-300">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-3">
+            <div>
+              <h3 class="text-2xl font-semibold text-gray-900 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0v6m-7 0h14" />
+                </svg>
+                Web Developer (Academic & Personal Projects)
+              </h3>
+              <p class="text-gray-600 text-sm">Batangas State University</p>
+            </div>
+            <span class="text-gray-600 text-sm mt-2 md:mt-0 italic">2023 – 2024</span>
+          </div>
 
-    <!-- Food Ordering -->
-    <div class="mb-10 hover:shadow-[0_0_25px_rgba(99,102,241,0.3)] transition duration-300 rounded-xl p-4">
-      <h3 class="text-xl font-bold">ONLINE FOOD ORDERING SYSTEM</h3>
-      <p class="text-gray-600 text-sm mb-1">May 2023</p>
-      <p class="text-gray-700 text-sm mb-3">Associated with <span class="font-semibold">Batangas State University</span></p>
-
-      <ul class="list-disc list-inside text-gray-700 mb-3">
-        <li>Allows customers to browse menus and conveniently place food orders online.</li>
-        <li>Manages restaurant operations such as order tracking, delivery scheduling, and menu updates.</li>
-        <li>Improves customer experience with real-time order status and easy reordering options.</li>
-      </ul>
-
-      <div class="flex flex-wrap gap-2 mb-4">
-        <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">PHP</span>
-        <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">MySQL</span>
-      </div>
-
-      <!-- Screenshots -->
-      <div class="flex flex-wrap gap-4 mb-4">
-        <img src="photos/Menu.jpg" alt="Screenshot 1" class="w-60 h-40 object-cover rounded-md shadow cursor-pointer hover:opacity-80" onclick="openModal(this)">
-        <img src="photos/category.jpg" alt="Screenshot 2" class="w-60 h-40 object-cover rounded-md shadow cursor-pointer hover:opacity-80" onclick="openModal(this)">
-        <img src="photos/orders.jpg" alt="Screenshot 3" class="w-60 h-40 object-cover rounded-md shadow cursor-pointer hover:opacity-80" onclick="openModal(this)">
-        <img src="photos/dashboard.jpg" alt="Screenshot 4" class="w-60 h-40 object-cover rounded-md shadow cursor-pointer hover:opacity-80" onclick="openModal(this)">
-      </div>
-
-      <div class="flex gap-3">
-        <a href="https://github.com/Markfruelda19/Food-Ordering-System" target="_blank" class="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700">View Source Code</a>
+          <ul class="list-disc list-inside text-gray-700 leading-relaxed space-y-1">
+            <li>Developed full-stack systems including a Dental Clinic Management System and Food Ordering System.</li>
+            <li>Built responsive interfaces and implemented secure CRUD operations using PHP, JavaScript, and MySQL.</li>
+            <li>Worked collaboratively to gather requirements and improve database performance.</li>
+          </ul>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+
+
+  <!-- Projects Section -->
+<section id="projects" class="py-20 bg-gradient-to-b from-gray-50 to-white" data-aos="fade-up">
+  <div class="max-w-6xl mx-auto px-6 md:px-12">
+    <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">Projects</h2>
+
+    <!-- Projects Grid -->
+    <div class="grid md:grid-cols-2 gap-10">
+
+      <!-- Dental Clinic Project -->
+      <div class="relative group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-[0_0_35px_rgba(99,102,241,0.25)] transition duration-500" data-aos="fade-right">
+        <div class="overflow-hidden">
+          <img src="photos/landing.png" alt="Dental Clinic Project" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+        </div>
+
+        <div class="p-6">
+          <h3 class="text-2xl font-semibold mb-2 text-gray-900">Dental Clinic Information Management System</h3>
+          <p class="text-gray-600 text-sm mb-2">Nov 2024 – Dec 2024</p>
+          <p class="text-gray-700 mb-4 leading-relaxed">
+            A management system that stores and manages patient records, services, and appointments in one platform.
+            It also tracks clinic operations such as scheduling, billing, and service utilization.
+          </p>
+
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">PHP</span>
+            <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">JavaScript</span>
+            <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">MySQL</span>
+          </div>
+
+          <div class="flex gap-3">
+            <a href="https://github.com/Markfruelda19/Dental-Clinic-Information-Management-System" target="_blank" class="px-5 py-2 bg-indigo-600 text-white rounded-full font-medium hover:bg-indigo-700 transition flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
+              View Code
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Food Ordering Project -->
+      <div class="relative group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-[0_0_35px_rgba(99,102,241,0.25)] transition duration-500" data-aos="fade-left">
+        <div class="overflow-hidden">
+          <img src="photos/category.jpg" alt="Food Ordering Project" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+        </div>
+
+        <div class="p-6">
+          <h3 class="text-2xl font-semibold mb-2 text-gray-900">Online Food Ordering System</h3>
+          <p class="text-gray-600 text-sm mb-2">May 2023</p>
+          <p class="text-gray-700 mb-4 leading-relaxed">
+            A full-featured ordering system that allows customers to browse menus, place orders, and track deliveries online. 
+            It also streamlines restaurant operations such as order tracking and menu management.
+          </p>
+
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">PHP</span>
+            <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">MySQL</span>
+          </div>
+
+          <div class="flex gap-3">
+            <a href="https://github.com/Markfruelda19/Food-Ordering-System" target="_blank" class="px-5 py-2 bg-indigo-600 text-white rounded-full font-medium hover:bg-indigo-700 transition flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
+              View Code
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+      
 
   <!-- Modal -->
   <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50">
@@ -153,13 +250,41 @@
     <img id="modalImage" class="max-w-4xl max-h-[80vh] rounded-lg shadow-lg">
   </div>
 
-  <!-- Contact -->
-  <section id="contact" class="max-w-6xl mx-auto bg-white shadow-md rounded-lg p-8 mt-10" data-aos="fade-up">
-    <h2 class="text-2xl font-bold mb-6">Contact</h2>
-    <p>Email: <a href="mailto:markfruelda19@gmail.com" class="text-blue-600 hover:underline">markfruelda19@gmail.com</a></p>
-    <p>GitHub: <a href="https://github.com/Markfruelda19" target="_blank" class="text-blue-600 hover:underline">Markfruelda19</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/mark-fruelda" target="_blank" class="text-blue-600 hover:underline">linkedin.com/in/mark-fruelda</a></p>
-  </section>
+  <!-- Contact Section -->
+<section id="contact" class="max-w-6xl mx-auto bg-white shadow-lg rounded-2xl p-12 mt-10" data-aos="fade-up">
+  <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">Get in Touch</h2>
+  <p class="text-center text-gray-600 mb-8">Feel free to reach out via email or connect with me on GitHub or LinkedIn!</p>
+  
+  <div class="flex justify-center gap-8">
+    <!-- Gmail -->
+    <a href="https://mail.google.com/mail/?view=cm&to=markfruelda19@gmail.com" 
+      target="_blank" 
+      class="flex items-center justify-center w-16 h-16 bg-red-500 text-white rounded-full shadow-lg hover:scale-110 hover:shadow-xl transition transform duration-300"
+      title="Email Me">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 13.065l-10-7.065h20l-10 7.065zm0 2.935l-12-8.065v12h24v-12l-12 8.065z"/>
+      </svg>
+    </a>
+
+    <!-- GitHub -->
+    <a href="https://github.com/Markfruelda19" target="_blank" 
+       class="flex items-center justify-center w-16 h-16 bg-gray-900 text-white rounded-full shadow-lg hover:scale-110 hover:shadow-xl transition transform duration-300"
+       title="GitHub">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 .297c-6.627 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577v-2.234c-3.338.727-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.757-1.333-1.757-1.089-.745.084-.729.084-.729 1.205.084 1.839 1.236 1.839 1.236 1.07 1.835 2.807 1.305 3.492.998.108-.775.418-1.305.762-1.605-2.665-.303-5.467-1.335-5.467-5.933 0-1.312.468-2.382 1.236-3.222-.123-.303-.536-1.523.117-3.176 0 0 1.008-.322 3.3 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.655 1.653.242 2.873.12 3.176.77.84 1.235 1.91 1.235 3.222 0 4.61-2.807 5.625-5.48 5.922.429.37.813 1.096.813 2.21v3.285c0 .319.216.694.825.576 4.765-1.588 8.2-6.084 8.2-11.386 0-6.627-5.373-12-12-12z"/>
+      </svg>
+    </a>
+
+    <!-- LinkedIn -->
+    <a href="https://linkedin.com/in/mark-fruelda" target="_blank" 
+       class="flex items-center justify-center w-16 h-16 bg-blue-600 text-white rounded-full shadow-lg hover:scale-110 hover:shadow-xl transition transform duration-300"
+       title="LinkedIn">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M22.225 0h-20.451c-.977 0-1.774.797-1.774 1.774v20.451c0 .977.797 1.774 1.774 1.774h20.451c.977 0 1.774-.797 1.774-1.774v-20.451c0-.977-.797-1.774-1.774-1.774zm-13.154 20.452h-3.692v-11.23h3.692v11.23zm-1.846-12.809c-1.183 0-2.141-.959-2.141-2.142 0-1.184.958-2.142 2.141-2.142s2.141.958 2.141 2.142c0 1.183-.958 2.142-2.141 2.142zm13.154 12.809h-3.692v-5.903c0-1.407-.028-3.216-1.959-3.216-1.959 0-2.259 1.529-2.259 3.106v6.013h-3.692v-11.23h3.545v1.528h.05c.493-.936 1.694-1.918 3.486-1.918 3.728 0 4.414 2.453 4.414 5.638v6.982z"/>
+      </svg>
+    </a>
+  </div>
+</section>
 
   <!-- Footer -->
   <footer class="bg-gray-900 text-white text-center py-5 mt-10">
@@ -170,7 +295,21 @@
   <button id="backToTop" class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hidden hover:bg-indigo-700 transition">
     ↑
   </button>
-
+  <script>
+    const nameText = "Mark Fruelda";
+    const typingElement = document.getElementById("typingName");
+    let i = 0;
+    function typeEffect() {
+      if (i < nameText.length) {
+        typingElement.textContent += nameText.charAt(i);
+        i++;
+        setTimeout(typeEffect, 150);
+      } else {
+        typingElement.classList.remove("border-r-4");
+      }
+    }
+    window.addEventListener("load", () => setTimeout(typeEffect, 1000));
+  </script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 800, once: true });
